@@ -1,0 +1,38 @@
+﻿@model UrunStokTakip.Models.Sepet
+@{
+    ViewBag.Title = "SatinAl";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="model-header">
+    <h2>Satın Al</h2>
+</div>
+
+<div class="container">
+    @using (Html.BeginForm("SatinAl2", "Satis", FormMethod.Post))
+    {
+    <div class="model-body">
+        @Html.HiddenFor(x => x.Id)
+        <div class="form-group">
+            Kullanıcı Ad Soyad: @Session["Ad"] @Session["Soyad"]
+        </div>
+        <div class="form-group">
+            Ürün Bilgisi:@Html.DisplayFor(x => x.UrunId, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            Adet:@Html.DisplayFor(x => x.Adet, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            Ürün Resmi: <img src="@Model.Urun.Resim" width="60" height="120" />
+        </div>
+        <div class="form-group text-center"style="font-size:15px; color:red">
+            Fiyat Bilgisi:@Html.DisplayFor(x=>x.Fiyat, new { @class = "form-control" })
+        </div>
+
+    </div>
+    <div class="model-footer"style="float:right">
+       <button class="btm btn-success">Satın Al</button>
+       <a href="/Sepet/Index"class="btn btn-dark">İptal</a>
+    </div>
+    }
+</div>
